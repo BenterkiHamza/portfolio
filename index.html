@@ -8,18 +8,29 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script>
+  // Applique le thème avant le rendu pour éviter un flash de mauvais thème
+  (function() {
+    var saved = localStorage.getItem('theme');
+    var theme = saved || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+    if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+  })();
+</script>
 </head>
 <body>
 
 <header>
   <nav>
-    <span class="nav-id">HB//DEV</span>
-    <div class="nav-links">
-      <a href="#about">Profil</a>
-      <a href="#stack">Stack</a>
-      <a href="#experience">Expérience</a>
-      <a href="#projects">Projets</a>
-      <a href="#contact">Contact</a>
+    <a class="logo-mark" href="#" aria-label="Hamza Benterki — Accueil">HB<span class="logo-pulse" aria-hidden="true"></span></a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="#about">Profil</a>
+        <a href="#stack">Stack</a>
+        <a href="#experience">Expérience</a>
+        <a href="#projects">Projets</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <button class="theme-toggle mono" id="theme-toggle" type="button" aria-label="Changer de thème">◐</button>
     </div>
   </nav>
 </header>
@@ -28,7 +39,7 @@
   <section class="hero">
     <div class="eyebrow">Disponible pour de nouvelles opportunités</div>
     <h1>Hamza Benterki<br>Développeur Full&nbsp;Stack <span class="hl">.NET</span></h1>
-    <p class="lede">8+ ans à concevoir des applications métier robustes — du dossier patient en imagerie médicale à la gestion de flotte logistique — avec une spécialisation rare en intégration d'automates de laboratoire (HL7, ASTM).</p>
+    <p class="lede">8+ ans à concevoir des applications métier robustes — du dossier patient en imagerie médicale à la gestion de flotte logistique — avec une spécialisation rare en intégration d'automates de laboratoire (HL7, ASTM), et une maîtrise de l'écosystème .NET du framework historique jusqu'à .NET 8.</p>
     <div class="cta-row">
       <a class="btn btn-primary" href="#contact">Me contacter</a>
       <a class="btn btn-ghost" href="https://github.com/BenterkiHamza" target="_blank" rel="noopener">GitHub ↗</a>
@@ -36,16 +47,13 @@
     </div>
   </section>
 
-  <!-- <div class="segment-strip mono"> -->
-    <!-- <span>MSH</span>|^~\&amp;|<span class="amber">FULLSTACK.NET</span>|ALGER|PORTFOLIO|20260712||<span>ADT^A08</span>|HB0001|P|2.5 &nbsp;&nbsp;&nbsp; PID|1||BENTERKI^HAMZA||19920726|M &nbsp;&nbsp;&nbsp; <span class="amber">OBR</span>|1|| .NET8^REACT^POSTGRESQL^CQRS^DDD -->
-  <!-- </div> -->
-
   <section id="about">
     <div class="section-head"><span class="section-num">01</span><h2>Profil</h2></div>
     <div class="about-grid">
       <div>
         <p>Développeur Full Stack .NET basé à Alger, je conçois et fais évoluer des applications web et desktop pour des environnements exigeants : cliniques et centres d'imagerie médicale, gestion de flotte, logistique de colis retour.</p>
-        <p>Mon terrain de jeu couvre l'écosystème .NET (Framework à .NET 8), Entity Framework Core, CQRS/MediatR, l'architecture propre (Clean Architecture, DDD), ainsi que React.js et TypeScript côté client. J'ai une expertise particulière dans l'intégration d'automates de laboratoire via les protocoles HL7 et ASTM — un domaine où la rigueur technique a un impact direct sur des dossiers patients réels.</p>
+        <p>Mon parcours couvre l'ensemble de l'écosystème .NET : j'ai démarré sur .NET Framework et ASP.NET MVC — plus de 5 ans passés à construire et maintenir des systèmes médicaux critiques dans cet environnement — avant de migrer vers .NET Core / .NET 8, Entity Framework Core et l'architecture propre (Clean Architecture). Côté client, je travaille avec React.js et TypeScript. J'ai une expertise particulière dans l'intégration d'automates de laboratoire via les protocoles HL7 et ASTM — un domaine où la rigueur technique a un impact direct sur des dossiers patients réels.</p>
+        <p>Cette double expérience — legacy .NET Framework et .NET moderne — me permet aussi bien de reprendre et faire évoluer des systèmes existants que de concevoir des architectures neuves dans les règles de l'art.</p>
         <p>J'aime les systèmes qui doivent tenir la charge et rester lisibles dans le temps : API bien architecturées, bases de données bien modélisées, interfaces qui ne mentent jamais à l'utilisateur.</p>
       </div>
       <div class="stat-list">
@@ -62,7 +70,7 @@
       <div class="stack-cat">
         <h3>Backend</h3>
         <div class="tags">
-          <span class="tag">.NET 6/7/8</span><span class="tag">ASP.NET Core Web API</span><span class="tag">Entity Framework Core</span><span class="tag">CQRS / MediatR</span><span class="tag">Clean Architecture</span><span class="tag">DDD</span>
+          <span class="tag">.NET Framework</span><span class="tag">ASP.NET MVC</span><span class="tag">ASP.NET Web Forms</span><span class="tag">.NET 6/7/8/9/10</span><span class="tag">Entity Framework Core</span><span class="tag">Clean Architecture</span>
         </div>
       </div>
       <div class="stack-cat">
@@ -102,8 +110,8 @@
       <div class="job-meta"><div class="period">01/2026 — 04/2026</div><div class="company">Yalidine El Djazair Service</div></div>
       <div>
         <h3 class="job-title">Développeur .NET Full Stack</h3>
-        <p class="job-desc">Développement d'une application de gestion des colis retour en .NET 6, MongoDB et React.js, dans un contexte logistique à fort volume.</p>
-        <div class="job-projects"><span class="chip">FleetGo</span><span class="chip">Qapp</span><span class="chip">CashBox</span></div>
+        <p class="job-desc">Développement d'une application de gestion des colis retour en .NET 6, MongoDB et React.js, dans un contexte logistique à fort volume. Rédaction et suivi d'un cahier des charges pour une application de gestion des réclamations.</p>
+        <div class="job-projects"><span class="chip">RetourApp</span><span class="chip">Réclamations</span></div>
       </div>
     </div>
 
@@ -120,7 +128,7 @@
       <div class="job-meta"><div class="period">07/2017 — 01/2023</div><div class="company">EuroSys Informatique</div></div>
       <div>
         <h3 class="job-title">Analyste Programmeur</h3>
-        <p class="job-desc">Développement d'un écosystème d'applications MVC / SQL Server pour le secteur médical (laboratoires d'analyses, centres d'imagerie, cliniques) et pour la mutuelle des douanes, incluant les interfaces avec les automates de laboratoire en HL7 et ASTM.</p>
+        <p class="job-desc">Développement en <strong>.NET Framework / ASP.NET MVC / SQL Server</strong> d'un écosystème d'applications pour le secteur médical (laboratoires d'analyses, centres d'imagerie, cliniques) et pour la mutuelle des douanes, incluant les interfaces avec les automates de laboratoire en HL7 et ASTM.</p>
         <div class="job-projects">
           <span class="chip">eRis</span><span class="chip">WebAccueil</span><span class="chip">WebLab</span><span class="chip">WebStock</span><span class="chip">WebSoin</span><span class="chip">WebConsultation</span><span class="chip">Cartes Adhérents Mutuelle</span>
         </div>
@@ -134,7 +142,7 @@
 
       <div class="proj-card">
         <div class="proj-head"><span class="proj-name">FleetGo</span><span class="proj-tag">Dév. principal</span></div>
-        <p class="proj-desc">Gestion de flotte de véhicules : suivi de maintenance, planification et gestion du stock de pièces de rechange.</p>
+        <p class="proj-desc">Gestion de flotte de véhicules : suivi de maintenance, planification et gestion du stock de pièces de rechange, avec module de réconciliation d'inventaire (détection et correction des écarts).</p>
         <div class="proj-tech"><span>.NET 8</span><span>PostgreSQL</span><span>React.js</span></div>
       </div>
 
@@ -159,31 +167,31 @@
       <div class="proj-card">
         <div class="proj-head"><span class="proj-name">eRis</span><span class="proj-tag">Dév. principal</span></div>
         <p class="proj-desc">Gestion du dossier patient pour centre d'imagerie médicale : historique d'examens, comptes rendus, suivi.</p>
-        <div class="proj-tech"><span>ASP.NET MVC</span><span>SQL Server</span></div>
+        <div class="proj-tech"><span>.NET Framework</span><span>ASP.NET MVC</span><span>SQL Server</span></div>
       </div>
 
       <div class="proj-card">
         <div class="proj-head"><span class="proj-name">WebAccueil</span><span class="proj-tag">Dév. principal</span></div>
         <p class="proj-desc">Accueil clinique complet : RDV, bons de caisse, admission hospitalière, tarification des prestations, conventions et facturation.</p>
-        <div class="proj-tech"><span>ASP.NET MVC</span><span>SQL Server</span></div>
+        <div class="proj-tech"><span>.NET Framework</span><span>ASP.NET MVC</span><span>SQL Server</span></div>
       </div>
 
       <div class="proj-card">
         <div class="proj-head"><span class="proj-name">WebLab</span><span class="proj-tag">Contribution</span></div>
         <p class="proj-desc">Gestion de laboratoire d'analyses médicales : réception, résultats et suivi des échantillons.</p>
-        <div class="proj-tech"><span>ASP.NET MVC</span><span>SQL Server</span></div>
+        <div class="proj-tech"><span>.NET Framework</span><span>ASP.NET MVC</span><span>SQL Server</span></div>
       </div>
 
       <div class="proj-card">
         <div class="proj-head"><span class="proj-name">WebStock</span><span class="proj-tag">Contribution</span></div>
         <p class="proj-desc">Gestion du stock pharmaceutique en environnement clinique.</p>
-        <div class="proj-tech"><span>ASP.NET MVC</span><span>SQL Server</span></div>
+        <div class="proj-tech"><span>.NET Framework</span><span>ASP.NET MVC</span><span>SQL Server</span></div>
       </div>
 
       <div class="proj-card">
         <div class="proj-head"><span class="proj-name">WebSoin / WebConsultation</span><span class="proj-tag">Contribution</span></div>
         <p class="proj-desc">Gestion des soins médicaux et gestion de cabinet médical au quotidien.</p>
-        <div class="proj-tech"><span>ASP.NET MVC</span><span>SQL Server</span></div>
+        <div class="proj-tech"><span>.NET Framework</span><span>ASP.NET MVC</span><span>SQL Server</span></div>
       </div>
 
     </div>
@@ -207,17 +215,45 @@
 
   <section id="contact" class="contact-block">
     <div class="eyebrow">Contact</div>
-    <!-- <h2>Discutons de votre projet</h2> -->
-    <!-- <p>Ouvert aux missions freelance, CDI ou collaborations techniques autour de l'écosystème .NET et des intégrations métier.</p> -->
     <div class="contact-links">
       <a class="btn btn-primary" href="mailto:benterki3hamza@gmail.com">benterki3hamza@gmail.com</a>
+      <a class="btn btn-ghost" href="tel:+213799010963">+213 799 01 09 63</a>
       <a class="btn btn-ghost" href="https://github.com/BenterkiHamza" target="_blank" rel="noopener">GitHub</a>
       <a class="btn btn-ghost" href="https://www.linkedin.com/in/hamza-benterki-70b791133" target="_blank" rel="noopener">LinkedIn</a>
     </div>
   </section>
 </div>
 
-<footer>© 2022 Hamza Benterki — Alger, Algérie</footer>
+<footer>© 2026 Hamza Benterki — Alger, Algérie</footer>
+
+<script>
+  (function() {
+    var btn = document.getElementById('theme-toggle');
+    var root = document.documentElement;
+
+    function isLight() {
+      return root.getAttribute('data-theme') === 'light';
+    }
+
+    function updateIcon() {
+      btn.textContent = isLight() ? '◑' : '◐';
+      btn.setAttribute('aria-label', isLight() ? 'Passer en mode sombre' : 'Passer en mode clair');
+    }
+
+    btn.addEventListener('click', function() {
+      if (isLight()) {
+        root.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        root.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
+      }
+      updateIcon();
+    });
+
+    updateIcon();
+  })();
+</script>
 
 </body>
 </html>
